@@ -1,15 +1,32 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
-    }
+    fun groupByElf(input: List<String>) = input
+        // group calories carried by each elf
+        .fold<String, ArrayList<ArrayList<Int>>>(ArrayList()) { acc, s ->
+            acc.apply {
+                if (isEmpty()) add(arrayListOf())
+                if (s.isBlank()) {
+                    add(arrayListOf())
+                } else {
+                    last().add(s.toInt())
+                }
+            }
+        }
 
-    fun part2(input: List<String>): Int {
-        return input.size
-    }
+    fun part1(input: List<String>): Int = groupByElf(input)
+        .maxOf { it.sum() }
+
+    fun part2(input: List<String>): Int = groupByElf(input)
+        .map { it.sum() }
+        .sortedDescending()
+        .take(3)
+        .sum()
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
+    // test part1
+    check(part1(testInput) == 24000)
+    // test part2
+    check(part2(testInput) == 45000)
 
     val input = readInput("Day01")
     println(part1(input))
