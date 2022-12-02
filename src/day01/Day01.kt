@@ -1,3 +1,7 @@
+package day01
+
+import readInput
+
 fun main() {
     fun groupByElf(input: List<String>) = input
         // group calories carried by each elf
