@@ -26,13 +26,13 @@ fun main() {
         .sum()
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
+    val testInput = readInput("day01/test_input")
     // test part1
     check(part1(testInput) == 24000)
     // test part2
     check(part2(testInput) == 45000)
 
-    val input = readInput("Day01")
+    val input = readInput("day01/input")
     println(part1(input))
     println(part2(input))
 }
