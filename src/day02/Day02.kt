@@ -4,6 +4,9 @@ import day02.Move.*
 import day02.RoundResult.*
 import readInput
 
+/**
+ * --- Day 2: Rock Paper Scissors ---
+ */
 fun main() {
     val choiceScore = mapOf(
         ROCK to 1,
@@ -82,6 +85,13 @@ fun main() {
     val input = readInput("day02/input")
     println(part1(input))
     println(part2(input))
+
+    // An alternative way to solve the puzzles in a very short way
+    val parsed = input
+        .map { it.split(" ").map(String::first) }
+        .map { (him, me) -> (him - 'A') to (me - 'X') }
+    println(parsed.sumOf { (him, me) -> ((me + 4 - him) % 3) * 3 + me + 1 })
+    println(parsed.sumOf { (him, me) -> (me + 2 + him) % 3 + 1 + me * 3 })
 
 }
 
