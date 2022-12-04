@@ -12,7 +12,7 @@ fun main() {
             acc.apply {
                 if (isEmpty()) add(arrayListOf())
                 if (s.isBlank()) {
-                    add(arrayListOf())
+                    add(arrayListOf())          
                 } else {
                     last().add(s.toInt())
                 }
