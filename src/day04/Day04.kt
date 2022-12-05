@@ -11,37 +11,27 @@ fun main() {
             val (left, right) = range
                 .split('-')
                 .map { it.toInt() }
-            (left..right)
+            (left..right).toSet()
         }
-        .sortedBy { it.first }
 
     fun part1(input: List<String>): Int {
         return input
             .map { toIntRanges(it) }
-            .map {
-                when {
-                    it[0].first < it[1].first
-                            && it[0].last >= it[1].last -> 1
-
-                    it[0].first == it[1].first
-                            && (it[0].last >= it[1].last || it[1].last > it[0].last) -> 1
-
-                    else -> 0
+            .let {
+                it.count { (a, b) ->
+                    a.containsAll(b) || b.containsAll(a)
                 }
             }
-            .sum()
     }
 
     fun part2(input: List<String>): Int {
         return input
             .map { toIntRanges(it) }
-            .map {
-                when {
-                    it[0].intersect(it[1]).isNotEmpty() -> 1
-                    else -> 0
+            .let {
+                it.count { (a, b) ->
+                    a.intersect(b).isNotEmpty()
                 }
             }
-            .sum()
 
     }
 
