@@ -1,7 +1,10 @@
-package day04
+package day05
 
 import readInput
 
+/**
+ * --- Day 5: Supply Stacks ---
+ */
 fun main() {
     val p = Regex("\\d+")
 
